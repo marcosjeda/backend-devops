@@ -47,4 +47,4 @@ Ahora para crear una nueva rama puedes ejecutar:
     
     git ckb tu_nueva_rama
 
-un datazo by [@marcosjeda](https://github.com/marcosjeda)
+un datazo by [Marcos Ojeda](https://github.com/marcosjeda)
