@@ -1,5 +1,5 @@
 import { describe, test, expect } from "@jest/globals";
-import { suma, restar, operar, multiplicar, dividir } from "../../src/app/calculadora";
+import { suma, restar, operar, multiplicar, dividir, potencia, factorial } from "../../src/app/calculadora";
 
 describe("Bateria de test de calculadora", () => {
 
@@ -78,6 +78,38 @@ describe("Bateria de test de calculadora", () => {
         a = 1;
         b = 0;
         expect(() => dividir(a, b)).toThrowError("No se puede dividir por cero");
+    });
+
+    test("Potencias en la calculadora", () => {
+        expect(potencia(2, 2)).toBe(4);
+
+        expect(potencia(3, 3)).toBe(27);
+
+        expect(potencia(1, 1000)).not.toBe(0);
+
+        let a: any = 1;
+        let b: any = "a"
+        expect(potencia(a, b)).toBeNaN();
+        a = 1;
+        b = undefined;
+        expect(() => potencia(a, b)).toThrowError("No se puede exponenciar valores indefinidos");
+    });
+
+    test("factorial en la calculadora", () => {
+        expect(factorial(0)).toBe(1);
+
+        expect(factorial(5)).toBe(120);
+
+        expect(factorial(8)).toBe(40320);
+
+        expect(factorial(9)).not.toBe(0);
+
+        let a: any = "a"
+        expect(factorial(a)).toBeNaN();
+        a = undefined;
+        expect(() => factorial(a)).toThrowError("No se puede obtener el factorial de un valor indefinido");
+        a = -10;
+        expect(() => factorial(a)).toThrowError("No se puede obtener el factorial de un número negativo");
     });
 
     test("Operar en la calculadora", () => {

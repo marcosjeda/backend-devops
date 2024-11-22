@@ -9,7 +9,9 @@ function operar(operacion: string = "", a: number, b: number) {
         'suma': suma,
         'resta': restar,
         'multiplicacion': multiplicar,
-        'division': dividir
+        'division': dividir,
+        'potencia': potencia,
+        'factorial': factorial
     }
 
     if (!Object.keys(operaciones).includes(operacion)) {
@@ -69,4 +71,34 @@ function dividir(a: number, b: number) {
     return a / b;
 }
 
-export { suma, operar, restar, multiplicar, dividir };
+function potencia(a: number, b: number) {
+    if (a === undefined || b === undefined) {
+
+        throw new Error("No se puede exponenciar valores indefinidos");
+    }
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        return NaN;
+    }
+
+    return Math.pow(a, b);
+}
+
+function factorial(a: number) {
+    if ( a === undefined ) {
+        throw new Error("No se puede obtener el factorial de un valor indefinido");
+    }
+    if ( typeof a !== 'number' ) {
+        return NaN;
+    }
+    if ( a < 0 ) {
+        throw new Error("No se puede obtener el factorial de un número negativo");
+    }
+    let factorial = 1
+    for ( let i = 1; i <= a; i++ ) {
+        factorial *= i
+    }
+
+    return factorial
+}
+
+export { suma, operar, restar, multiplicar, dividir, potencia, factorial };
