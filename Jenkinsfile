@@ -1,14 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage("Primera etapa") {
-            steps {
-                echo "Hola desde la etapa 1"
+        stage("Primera etapa build") {
+            agent {
+                docker {
+                    image 'node:22-alpine'
+                    reuseNode true
+                }
             }
-        }
-        stage("Segunda etapa") {
-            steps {
-                echo "Hola desde la etapa 2"
+            stages {
+                stage("Instalacion de dependencias") {
+                    steps {
+                        sh "npm i"
+                    }
+                }
+                stage("Ejecución del build") {
+                    steps {
+                        sh "npm run build"
+                    }
+                }
             }
         }
     }
