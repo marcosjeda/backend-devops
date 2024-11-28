@@ -4,6 +4,7 @@ pipeline {
         stage("Primera etapa build") {
             agent {
                 docker {
+                    label 'contenedores'
                     image 'node:22-alpine'
                     reuseNode true
                 }
